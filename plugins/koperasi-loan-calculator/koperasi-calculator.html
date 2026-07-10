@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Koperasi Personal Loan Calculator Showcase</title>
+  
+  <!-- Import Google Font for this Demo Page -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Load the Plugin stylesheet -->
+  <link rel="stylesheet" href="koperasi-calculator.css">
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Outfit', sans-serif;
+      background: #020617; /* Deep Slate Black */
+      color: #f8fafc;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    header {
+      background: radial-gradient(circle at top left, #0b1528, #020617);
+      padding: 60px 20px;
+      text-align: center;
+      border-bottom: 1px solid rgba(59, 130, 246, 0.15);
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #60a5fa, #3b82f6, #0284c7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -1px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #94a3b8;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid #3b82f6;
+      color: #60a5fa;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px 80px;
+    }
+
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+
+    .card {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 24px;
+      border-left: 4px solid #3b82f6;
+      padding-left: 12px;
+    }
+
+    .theme-selector-bar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      justify-content: flex-end;
+    }
+
+    .theme-select-btn {
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: #94a3b8;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .theme-select-btn.active {
+      background: #3b82f6;
+      border-color: #3b82f6;
+      color: #ffffff;
+      box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+    }
+
+    /* Tabs / documentation styles */
+    .docs-nav {
+      display: flex;
+      border-bottom: 1px solid #334155;
+      margin-bottom: 20px;
+    }
+
+    .docs-tab {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      padding: 12px 24px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .docs-tab.active {
+      color: #3b82f6;
+      border-bottom-color: #3b82f6;
+    }
+
+    .docs-content {
+      background: #090d16;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 24px;
+      font-family: monospace;
+      color: #a7f3d0;
+      white-space: pre-wrap;
+      overflow-x: auto;
+      font-size: 0.9rem;
+    }
+
+    .features-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    @media (min-width: 768px) {
+      .features-list {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    .feature-item {
+      background: #0b1329;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 20px;
+      transition: transform 0.2s;
+    }
+
+    .feature-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .feature-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .feature-desc {
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+
+    /* Iframe preview container */
+    .iframe-container {
+      width: 100%;
+      height: 700px;
+      border: none;
+      border-radius: 16px;
+      background: transparent;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <span class="badge">Standalone Web Plugin</span>
+    <h1>Koperasi Personal Loan Calculator</h1>
+    <p>A dependency-free, modern, highly configurable loan widget with real-time upfront fee deductions, SVG chart visualization, and amortization schedule.</p>
+  </header>
+
+  <div class="container">
+    
+    <!-- Feature Highlights -->
+    <div class="features-list">
+      <div class="feature-item">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-title">Real-time Upfront Deductions</div>
+        <div class="feature-desc">Accurately subtracts processing fees, Takaful insurance, membership fees, and advance payments from the principal to calculate the net payout.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">📊</div>
+        <div class="feature-title">SVG Donut Breakdown</div>
+        <div class="feature-desc">Visual real-time SVG Donut chart displaying payout vs interest cost vs deductions without any heavy charting library.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🛠️</div>
+        <div class="feature-title">Live Configurator</div>
+        <div class="feature-desc">Modify interest rates, fee percentages, and settings inline, and copy the dynamic JSON initialization code immediately.</div>
+      </div>
+    </div>
+
+    <div class="showcase-grid">
+      
+      <!-- Section 1: Live Interactive Demo -->
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+          <h2 class="card-title" style="margin: 0; border: none; padding: 0;">Live Calculator Demo</h2>
+          <div class="theme-selector-bar">
+            <button class="theme-select-btn" onclick="setDemoTheme('light')">Light Theme</button>
+            <button class="theme-select-btn" onclick="setDemoTheme('dark')">Dark Theme</button>
+            <button class="theme-select-btn active" onclick="setDemoTheme('cosmic')">Cosmic Theme</button>
+          </div>
+        </div>
+        
+        <!-- Target div for the calculator -->
+        <div id="live-calculator"></div>
+      </div>
+
+      <!-- Section 2: Integration Documentation -->
+      <div class="card">
+        <h2 class="card-title">Integration Code Templates</h2>
+        
+        <div class="docs-nav">
+          <button class="docs-tab active" onclick="showDocsTab('js-docs', this)">Pure JS</button>
+          <button class="docs-tab" onclick="showDocsTab('php-docs', this)">PHP Integration</button>
+          <button class="docs-tab" onclick="showDocsTab('iframe-docs', this)">Iframe Embed</button>
+        </div>
+
+        <div id="js-docs" class="docs-content-block">
+          <div class="docs-content">&lt;!-- 1. Include the styles inside &lt;head&gt; --&gt;
+&lt;link rel="stylesheet" href="plugins/koperasi-loan-calculator/koperasi-calculator.css"&gt;
+
+&lt;!-- 2. Put target element --&gt;
+&lt;div id="my-calculator-widget"&gt;&lt;/div&gt;
+
+&lt;!-- 3. Include script and initialize --&gt;
+&lt;script src="plugins/koperasi-loan-calculator/koperasi-calculator.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function() {
+    KoperasiCalculator.init('my-calculator-widget', {
+      theme: 'cosmic', // Options: 'light', 'dark', 'cosmic'
+      defaultLoan: 30000,
+      defaultTenure: 5,
+      calculationMode: 'flat' // Options: 'flat', 'reducing'
+    });
+  });
+&lt;/script&gt;</div>
+        </div>
+
+        <div id="php-docs" class="docs-content-block" style="display: none;">
+          <div class="docs-content">&lt;?php
+// 1. Require the plugin helper class
+require_once 'plugins/koperasi-loan-calculator/koperasi-calculator.php';
+
+// 2. Output the styles and scripts in your &lt;head&gt; or layout
+KoperasiLoanCalculator::register_assets();
+
+// 3. Render the widget inside your container
+echo KoperasiLoanCalculator::render('my-php-calculator', [
+    'theme' => 'cosmic',
+    'defaultLoan' => 45000,
+    'defaultTenure' => 6
+]);
+?&gt;</div>
+        </div>
+
+        <div id="iframe-docs" class="docs-content-block" style="display: none;">
+          <div class="docs-content">&lt;!-- Embed via standard Iframe to completely isolate CSS/JS --&gt;
+&lt;iframe src="plugins/koperasi-loan-calculator/koperasi-calculator.html?embed=1&amp;theme=cosmic" 
+        width="100%" 
+        height="700px" 
+        style="border: none; overflow: hidden; border-radius: 12px;"&gt;
+&lt;/iframe&gt;</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Load the Plugin JavaScript controller -->
+  <script src="koperasi-calculator.js"></script>
+  
+  <script>
+    // Initialize the live demo calculator
+    let calcInstance = null;
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check query parameters to see if embedded in iframe
+      const urlParams = new URLSearchParams(window.location.search);
+      const isEmbed = urlParams.get('embed') === '1';
+      const customTheme = urlParams.get('theme') || 'cosmic';
+
+      if (isEmbed) {
+        // If embedded, hide page background, header and outer wrapper
+        document.body.style.background = 'transparent';
+        document.querySelector('header').style.display = 'none';
+        
+        // Remove padding from main container
+        const container = document.querySelector('.container');
+        container.style.margin = '0';
+        container.style.padding = '0';
+        container.style.maxWidth = '100%';
+        
+        // Render only the widget directly on screen
+        const showcaseGrid = document.querySelector('.showcase-grid');
+        showcaseGrid.style.gap = '0';
+        
+        const card = document.querySelector('.card');
+        card.style.background = 'transparent';
+        card.style.border = 'none';
+        card.style.padding = '0';
+        card.style.boxShadow = 'none';
+        
+        // Hide other items
+        document.querySelector('.theme-selector-bar').style.display = 'none';
+        document.querySelector('.features-list').style.display = 'none';
+        // Hide documentation card
+        const cards = document.querySelectorAll('.card');
+        if (cards[1]) cards[1].style.display = 'none';
+
+        // Init widget
+        calcInstance = KoperasiCalculator.init('live-calculator', {
+          theme: customTheme
+        });
+      } else {
+        // Standard full demonstration page
+        calcInstance = KoperasiCalculator.init('live-calculator', {
+          theme: 'cosmic'
+        });
+      }
+    });
+
+    // Theme selector helper
+    function setDemoTheme(theme) {
+      // Set active button style
+      const btns = document.querySelectorAll('.theme-select-btn');
+      btns.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.textContent.toLowerCase().includes(theme)) {
+          btn.classList.add('active');
+        }
+      });
+
+      // Update widget theme
+      const widgetWrap = document.getElementById(`kop-calc-wrapper-live-calculator`);
+      if (widgetWrap) {
+        widgetWrap.classList.remove('theme-light', 'theme-dark', 'theme-cosmic');
+        widgetWrap.classList.add(`theme-${theme}`);
+        calcInstance.options.theme = theme;
+        calcInstance.updateConfigOutput();
+        
+        // Sync theme buttons in calculator header
+        const calcThemeBtns = widgetWrap.querySelectorAll('.kop-calc-theme-btn');
+        calcThemeBtns.forEach(btn => {
+          btn.classList.remove('active');
+          if (btn.getAttribute('data-theme') === theme) {
+            btn.classList.add('active');
+          }
+        });
+      }
+    }
+
+    // Docs tab swapper
+    function showDocsTab(tabId, el) {
+      const tabs = document.querySelectorAll('.docs-tab');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      el.classList.add('active');
+
+      const blocks = document.querySelectorAll('.docs-content-block');
+      blocks.forEach(block => block.style.display = 'none');
+
+      document.getElementById(tabId).style.display = 'block';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "name": "Shawn Radam | Personal Advisor",
+  "short_name": "Shawn Radam",
+  "description": "Property & Financial Loans Advisory Services in Sabah, Malaysia",
+  "start_url": "index.php",
+  "display": "standalone",
+  "background_color": "#0a0e27",
+  "theme_color": "#0a0e27",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/logo-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/logo-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ]
+}

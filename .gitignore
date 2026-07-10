@@ -1,0 +1,9 @@
+/vendor/
+/no-upload/
+/tmp_menu_test/
+*.log
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db

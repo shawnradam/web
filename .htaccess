@@ -1,0 +1,32 @@
+DirectoryIndex index.php
+
+RewriteEngine On
+
+# Public clean URLs. Old .php URLs still work directly.
+RewriteRule ^$ index.php [L,QSA]
+RewriteRule ^properties/?$ properties.php [L,QSA]
+RewriteRule ^loans-financing/?$ finance.php [L,QSA]
+RewriteRule ^calculators/?$ calculators.php [L,QSA]
+RewriteRule ^blog/?$ blog.php [L,QSA]
+RewriteRule ^blog/([A-Za-z0-9_-]+)/?$ post-view.php?slug=$1 [L,QSA]
+RewriteRule ^contact/?$ contact.php [L,QSA]
+RewriteRule ^about/?$ about.php [L,QSA]
+RewriteRule ^briefing/?$ briefing.php [L,QSA]
+RewriteRule ^developer-briefing/?$ developer-briefing.php [L,QSA]
+RewriteRule ^briefing-success/?$ briefing-success.php [L,QSA]
+RewriteRule ^privacy/?$ privacy.php [L,QSA]
+RewriteRule ^disclaimer/?$ disclaimer.php [L,QSA]
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()"
+    Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.bunny.net; font-src 'self' data: https://fonts.gstatic.com https://fonts.bunny.net; img-src 'self' data: blob: https:; connect-src 'self'; frame-src 'self' https://www.facebook.com; upgrade-insecure-requests"
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" "expr=%{HTTPS} == 'on'"
+</IfModule>
+
+# Do not rewrite existing files or folders.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
