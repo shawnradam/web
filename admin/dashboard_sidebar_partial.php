@@ -33,7 +33,6 @@ try {
     $unreadFeedback = 0;
 }
 ?>
-<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 <style>
     .admin-sidebar-scroll { scrollbar-width: thin; scrollbar-color: rgba(212,175,55,.5) rgba(15,23,42,.25); }
     .admin-sidebar-scroll::-webkit-scrollbar { width: 6px; }

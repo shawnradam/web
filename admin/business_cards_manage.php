@@ -218,7 +218,6 @@ $cards = $pdo->query("SELECT * FROM digital_business_cards ORDER BY id DESC")->f
 <head>
     <?php $pageTitle = 'Manage Digital Business Cards'; ?>
     <?php include 'includes/admin_head.php'; ?>
-    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body class="bg-navy-900 text-slate-300 font-sans antialiased">
     <div class="flex min-h-screen relative" x-data="{ 
@@ -245,7 +244,7 @@ $cards = $pdo->query("SELECT * FROM digital_business_cards ORDER BY id DESC")->f
 
                     <?php if (isset($_GET['success'])): ?>
                         <div class="mb-6 bg-emerald-950/40 border border-emerald-500/50 text-emerald-400 px-4 py-3 rounded-lg flex items-center gap-2">
-                            <span>✅</span>
+                            <span>âœ…</span>
                             <span>
                                 <?php 
                                     if ($_GET['success'] === 'added') echo "New digital business card created!";
@@ -258,7 +257,7 @@ $cards = $pdo->query("SELECT * FROM digital_business_cards ORDER BY id DESC")->f
 
                     <?php if ($error_message): ?>
                         <div class="mb-6 bg-red-950/40 border border-red-500/50 text-red-400 px-4 py-3 rounded-lg">
-                            ❌ <?php echo htmlspecialchars($error_message); ?>
+                            âŒ <?php echo htmlspecialchars($error_message); ?>
                         </div>
                     <?php endif; ?>
 
@@ -267,7 +266,7 @@ $cards = $pdo->query("SELECT * FROM digital_business_cards ORDER BY id DESC")->f
                         <div class="bg-slate-800 rounded-xl border border-gold-500/40 overflow-hidden shadow-lg mb-8">
                             <div class="bg-slate-900/60 px-6 py-4 border-b border-gold-500/30 flex justify-between items-center">
                                 <h2 class="text-lg font-bold text-white flex items-center gap-2">
-                                    <span>📝</span> Edit Card: <?= htmlspecialchars($editCard['full_name']) ?>
+                                    <span>ðŸ“</span> Edit Card: <?= htmlspecialchars($editCard['full_name']) ?>
                                 </h2>
                                 <a href="business_cards_manage.php" class="text-xs bg-slate-700 hover:bg-slate-600 px-3 py-1.5 rounded text-white font-bold transition-all">Cancel Edit</a>
                             </div>
@@ -404,7 +403,7 @@ $cards = $pdo->query("SELECT * FROM digital_business_cards ORDER BY id DESC")->f
                         <div class="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden shadow-lg mb-8" x-data="{ open: false }">
                             <div class="bg-slate-900/60 px-6 py-4 border-b border-slate-700 flex justify-between items-center">
                                 <h2 class="text-lg font-bold text-white flex items-center gap-2">
-                                    <span>➕</span> Add New Digital Business Card
+                                    <span>âž•</span> Add New Digital Business Card
                                 </h2>
                                 <button type="button" @click="open = !open" 
                                     class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold px-3 py-1.5 rounded transition-all cursor-pointer">

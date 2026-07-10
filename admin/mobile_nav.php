@@ -101,11 +101,9 @@ function admin_mobile_icon_svg($icon)
         <span class="text-[9px] font-medium">Settings</span>
     </a>
 </div>
-<div x-show="sidebarOpen" class="md:hidden fixed inset-0 z-[60] pointer-events-none" style="display: none;" x-cloak>
-    <div x-show="sidebarOpen" x-data="{ mobileMenuCollapsed: (function(){ try { return localStorage.getItem('mobileAdminMenuCollapsed') === 'true' } catch(e){ return false } })() }" x-init="$watch('mobileMenuCollapsed', val => { try { localStorage.setItem('mobileAdminMenuCollapsed', val) } catch(e){} })"
-        x-transition:enter="transform transition ease-out duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
-        x-transition:leave="transform transition ease-in duration-250" x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full"
-        class="pointer-events-auto absolute inset-y-0 left-0 bg-[#101517] flex flex-col pb-safe shadow-[12px_0_40px_rgba(0,0,0,0.55)] transition-all duration-300" :class="mobileMenuCollapsed ? 'w-20' : 'w-[78vw] max-w-[300px]'">
+<div class="md:hidden fixed inset-0 z-[60] pointer-events-none" @keydown.escape.window="sidebarOpen = false">
+    <div x-data="{ mobileMenuCollapsed: (function(){ try { return localStorage.getItem('mobileAdminMenuCollapsed') === 'true' } catch(e){ return false } })() }" x-init="$watch('mobileMenuCollapsed', val => { try { localStorage.setItem('mobileAdminMenuCollapsed', val) } catch(e){} })"
+        class="absolute inset-y-0 left-0 -translate-x-full pointer-events-none bg-[#101517] flex flex-col pb-safe shadow-[12px_0_40px_rgba(0,0,0,0.55)] transition-all duration-300" :class="[sidebarOpen ? 'translate-x-0 pointer-events-auto' : '-translate-x-full pointer-events-none', mobileMenuCollapsed ? 'w-20' : 'w-[78vw] max-w-[300px]']">
         <div class="px-3 py-3 border-b border-slate-800 flex items-center bg-[#151a1d]" :class="mobileMenuCollapsed ? 'justify-center gap-1' : 'justify-between'">
             <div x-show="!mobileMenuCollapsed" x-cloak>
                 <h3 class="text-white text-sm font-semibold tracking-wide">Admin Menu</h3>
@@ -159,7 +157,8 @@ function admin_mobile_icon_svg($icon)
                 <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>
                 <span x-show="!mobileMenuCollapsed" x-cloak class="text-sm font-medium">Logout</span>
             </a>
-        </div>    </div>
+        </div>
+    </div>
 </div>
 
 <style>

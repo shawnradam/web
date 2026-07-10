@@ -103,8 +103,6 @@ $presets = $pdo->query("SELECT * FROM koperasi_presets ORDER BY display_order AS
 <head>
     <?php $pageTitle = 'Koperasi Calculator Settings'; ?>
     <?php include 'includes/admin_head.php'; ?>
-    <!-- Collapse plugin for Alpine.js -->
-    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body class="bg-navy-900 text-slate-300 font-sans antialiased">
     <div class="flex min-h-screen relative" x-data="{ 
@@ -131,7 +129,7 @@ $presets = $pdo->query("SELECT * FROM koperasi_presets ORDER BY display_order AS
 
                     <?php if (isset($_GET['success'])): ?>
                         <div class="mb-6 bg-emerald-950/40 border border-emerald-500/50 text-emerald-400 px-4 py-3 rounded-lg flex items-center gap-2">
-                            <span>✅</span>
+                            <span>âœ…</span>
                             <span>
                                 <?php 
                                     if ($_GET['success'] === 'added') echo "New cooperative preset added successfully!";
@@ -144,7 +142,7 @@ $presets = $pdo->query("SELECT * FROM koperasi_presets ORDER BY display_order AS
 
                     <?php if (isset($error_message)): ?>
                         <div class="mb-6 bg-red-950/40 border border-red-500/50 text-red-400 px-4 py-3 rounded-lg">
-                            ❌ <?php echo htmlspecialchars($error_message); ?>
+                            âŒ <?php echo htmlspecialchars($error_message); ?>
                         </div>
                     <?php endif; ?>
 
@@ -152,7 +150,7 @@ $presets = $pdo->query("SELECT * FROM koperasi_presets ORDER BY display_order AS
                     <div class="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden shadow-lg mb-8" x-data="{ open: false }">
                         <div class="bg-slate-900/60 px-6 py-4 border-b border-slate-700 flex justify-between items-center">
                             <h2 class="text-lg font-bold text-white flex items-center gap-2">
-                                <span>➕</span> Add New Cooperative Preset
+                                <span>âž•</span> Add New Cooperative Preset
                             </h2>
                             <button type="button" @click="open = !open" 
                                 class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold px-3 py-1.5 rounded transition-all cursor-pointer">
