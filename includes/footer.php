@@ -1,9 +1,11 @@
 <?php
 require_once 'includes/lang.php';
+require_once 'includes/newsletter_settings.php';
 require_once 'plugins/koperasi-loan-calculator/koperasi-calculator.php';
 require_once 'plugins/property-calculator/property-calculator.php';
 KoperasiLoanCalculator::register_assets();
 PropertyCalculator::register_assets();
+$newsletterSettings = sr_newsletter_settings($pdo ?? null);
 ?>
 <footer class="bg-navy-900 border-t border-slate-800 pt-16 pb-8 px-6">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
@@ -37,18 +39,18 @@ PropertyCalculator::register_assets();
         <div class="absolute inset-y-0 right-0 w-1/2 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.18),transparent_40%)] pointer-events-none"></div>
         <div class="relative grid lg:grid-cols-[1fr_0.95fr] gap-8 p-6 sm:p-8 lg:p-10 items-center">
             <div>
-                <p class="text-gold-500 uppercase tracking-[0.32em] text-xs font-bold mb-3">Private Notes</p>
-                <h4 class="font-serif text-3xl sm:text-4xl text-white mb-4">Receive property, land, and financing insights.</h4>
-                <p class="text-slate-400 max-w-2xl leading-relaxed">A concise newsletter for practical Sabah property decisions, loan readiness, land lot checks, and advisory updates.</p>
+                <p class="text-gold-500 uppercase tracking-[0.32em] text-xs font-bold mb-3"><?php echo htmlspecialchars($newsletterSettings['newsletter_footer_kicker']); ?></p>
+                <h4 class="font-serif text-3xl sm:text-4xl text-white mb-4"><?php echo htmlspecialchars($newsletterSettings['newsletter_footer_title']); ?></h4>
+                <p class="text-slate-400 max-w-2xl leading-relaxed"><?php echo htmlspecialchars($newsletterSettings['newsletter_footer_description']); ?></p>
             </div>
             <form id="footerNewsletterForm" class="bg-navy-900/80 border border-slate-700 p-4 sm:p-5" novalidate>
-                <label for="footerNewsletterEmail" class="block text-xs uppercase tracking-widest text-slate-400 mb-2">Email Address</label>
+                <label for="footerNewsletterEmail" class="block text-xs uppercase tracking-widest text-slate-400 mb-2"><?php echo htmlspecialchars($newsletterSettings['newsletter_footer_label']); ?></label>
                 <div class="grid sm:grid-cols-[1fr_auto] gap-3">
-                    <input id="footerNewsletterEmail" name="email" type="email" required placeholder="you@example.com" class="w-full bg-slate-950 border border-slate-700 text-white px-4 py-3 outline-none focus:border-gold-500 placeholder:text-slate-600">
-                    <button type="submit" class="bg-gold-500 hover:bg-gold-400 text-navy-900 px-6 py-3 text-xs font-bold uppercase tracking-wider transition-colors whitespace-nowrap">Subscribe</button>
+                    <input id="footerNewsletterEmail" name="email" type="email" required placeholder="<?php echo htmlspecialchars($newsletterSettings['newsletter_footer_placeholder']); ?>" class="w-full bg-slate-950 border border-slate-700 text-white px-4 py-3 outline-none focus:border-gold-500 placeholder:text-slate-600">
+                    <button type="submit" class="bg-gold-500 hover:bg-gold-400 text-navy-900 px-6 py-3 text-xs font-bold uppercase tracking-wider transition-colors whitespace-nowrap"><?php echo htmlspecialchars($newsletterSettings['newsletter_footer_button']); ?></button>
                 </div>
                 <p id="footerNewsletterMessage" class="min-h-[1.25rem] mt-3 text-sm text-slate-400"></p>
-                <p class="text-[11px] text-slate-500 leading-relaxed">No spam. Only website updates and advisory notes relevant to property, financing, and land matters.</p>
+                <p class="text-[11px] text-slate-500 leading-relaxed"><?php echo htmlspecialchars($newsletterSettings['newsletter_footer_note']); ?></p>
             </form>
         </div>
     </div>

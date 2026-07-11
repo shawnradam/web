@@ -12,8 +12,8 @@ return [
     'nav.digital_card' => 'Executive Profile Card',
     'nav.brand_suffix' => 'Shawn Radam | Personal Advisor',
 
-    'footer.brand_description' => 'Gatekeeping integrity in Borneo Real Estate. Providing strategic property advisory and loans financing solutions.',
-    'footer.brand_label' => 'Private Advisory & Consulting',
+    'footer.brand_description' => 'Practical property advisory and loans financing support for Sabah buyers, landowners, and investors.',
+    'footer.brand_label' => 'Financial Loans & Property Agent',
     'footer.services' => 'Services',
     'footer.service_property' => 'Property Advisor',
     'footer.service_loans' => 'Loans Financing',

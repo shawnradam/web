@@ -12,8 +12,8 @@ return [
     'nav.digital_card' => 'Kad Profil Eksekutif',
     'nav.brand_suffix' => 'Shawn Radam | Penasihat Peribadi',
 
-    'footer.brand_description' => 'Menjaga integriti dalam hartanah Borneo. Menyediakan khidmat nasihat hartanah strategik dan penyelesaian pembiayaan pinjaman.',
-    'footer.brand_label' => 'Khidmat Nasihat & Perundingan Peribadi',
+    'footer.brand_description' => 'Sokongan hartanah dan pembiayaan pinjaman yang praktikal untuk pembeli, pemilik tanah, dan pelabur di Sabah.',
+    'footer.brand_label' => 'Pinjaman Kewangan & Ejen Hartanah',
     'footer.services' => 'Perkhidmatan',
     'footer.service_property' => 'Penasihat Hartanah',
     'footer.service_loans' => 'Pembiayaan Pinjaman',

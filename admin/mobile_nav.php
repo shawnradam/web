@@ -24,6 +24,7 @@ $adminMenuGroups = [
         ['href' => 'ads_manage.php', 'title' => 'Advertisements', 'desc' => 'Campaign ads', 'color' => 'pink', 'icon' => 'megaphone'],
         ['href' => 'header_notifications_manage.php', 'title' => 'Header Alerts', 'desc' => 'Bell notifications', 'color' => 'orange', 'icon' => 'bell'],
         ['href' => 'feedback_manage.php', 'title' => 'Feedback', 'desc' => 'Visitor messages', 'color' => 'cyan', 'icon' => 'feedback'],
+        ['href' => 'newsletter_manage.php', 'title' => 'Newsletter', 'desc' => 'Copy and subscribers', 'color' => 'gold', 'icon' => 'newsletter'],
     ],
     'System' => [
         ['href' => 'translations_manage.php', 'title' => 'Translations', 'desc' => 'Frontend language text', 'color' => 'gold', 'icon' => 'translations'],
@@ -69,6 +70,7 @@ function admin_mobile_icon_svg($icon)
         'translations' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h9M9 3v2m1.5 10A15 15 0 016 9m1-4a15 15 0 006 10M14 21l4-9 4 9M16 17h4" />',
         'settings' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.3 4.3c.4-1.7 2.9-1.7 3.4 0a1.7 1.7 0 002.5 1.1c1.5-.9 3.3.8 2.4 2.4a1.7 1.7 0 001.1 2.5c1.7.4 1.7 2.9 0 3.4a1.7 1.7 0 00-1.1 2.5c.9 1.5-.8 3.3-2.4 2.4a1.7 1.7 0 00-2.5 1.1c-.4 1.7-2.9 1.7-3.4 0a1.7 1.7 0 00-2.5-1.1c-1.5.9-3.3-.8-2.4-2.4a1.7 1.7 0 00-1.1-2.5c-1.7-.4-1.7-2.9 0-3.4a1.7 1.7 0 001.1-2.5c-.9-1.5.8-3.3 2.4-2.4a1.7 1.7 0 002.5-1.1z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />',
         'profile' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12a4 4 0 100-8 4 4 0 000 8zM4 21a8 8 0 0116 0" />',
+        'newsletter' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16v12H4V6zM4 7l8 6 8-6" />',
     ];
     $path = $paths[$icon] ?? $paths['menu'];
     return '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">' . $path . '</svg>';

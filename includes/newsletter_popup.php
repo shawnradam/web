@@ -1,3 +1,7 @@
+<?php
+require_once __DIR__ . '/newsletter_settings.php';
+$newsletterSettings = sr_newsletter_settings($pdo ?? null);
+?>
 <!-- includes/newsletter_popup.php -->
 <div id="newsletterPopup"
     class="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 transform translate-y-[150%] transition-transform duration-500 ease-out max-w-sm w-full p-6 bg-slate-800 border border-gold-500/30 rounded-2xl shadow-2xl hidden">
@@ -12,18 +16,18 @@
         <div class="w-12 h-12 bg-gold-500/10 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">
             &#9993;
         </div>
-        <h3 class="text-xl font-serif font-bold text-white mb-1">Stay Updated</h3>
-        <p class="text-sm text-slate-400">Get the latest insights on Sabah land development directly to your inbox.</p>
+        <h3 class="text-xl font-serif font-bold text-white mb-1"><?php echo htmlspecialchars($newsletterSettings['newsletter_popup_title']); ?></h3>
+        <p class="text-sm text-slate-400"><?php echo htmlspecialchars($newsletterSettings['newsletter_popup_description']); ?></p>
     </div>
 
     <form id="newsletterForm" class="space-y-3">
         <div class="relative">
-            <input type="email" id="newsletterEmail" required placeholder="your.email@example.com"
+            <input type="email" id="newsletterEmail" required placeholder="<?php echo htmlspecialchars($newsletterSettings['newsletter_popup_placeholder']); ?>"
                 class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-gold-500 transition-colors text-sm placeholder:text-slate-600">
         </div>
         <button type="submit"
             class="w-full bg-gold-500 hover:bg-gold-400 text-navy-900 font-bold py-3 rounded-lg transition-colors uppercase tracking-wider text-xs">
-            Subscribe Free
+            <?php echo htmlspecialchars($newsletterSettings['newsletter_popup_button']); ?>
         </button>
         <p id="newsletterMessage" class="text-xs text-center min-h-[1rem] transition-colors"></p>
     </form>

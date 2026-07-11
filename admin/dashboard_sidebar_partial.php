@@ -271,6 +271,19 @@ try {
                 Notifications</span>
         </a>
 
+        <!-- Newsletter -->
+        <a href="newsletter_manage.php"
+            class="flex items-center gap-3 px-3 py-2 rounded-lg transition-colors group"
+            :class="collapsed ? 'justify-center' : ''" title="Newsletter">
+            <div
+                class="<?php echo basename($_SERVER['PHP_SELF']) == 'newsletter_manage.php' ? 'text-gold-500' : 'text-slate-400 group-hover:text-white'; ?>">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16v12H4V6zM4 7l8 6 8-6" />
+                </svg>
+            </div>
+            <span x-show="!collapsed"
+                class="whitespace-nowrap <?php echo basename($_SERVER['PHP_SELF']) == 'newsletter_manage.php' ? 'text-white' : 'text-slate-300 group-hover:text-white'; ?>">Newsletter</span>
+        </a>
         <!-- Divider Label -->
         <div class="pt-4 pb-2 px-3 text-xs font-bold uppercase tracking-widest text-slate-600 truncate"
             x-show="!collapsed">System</div>

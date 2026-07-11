@@ -11,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 require_once 'admin/db_connect.php';
 require_once 'admin/helpers/EmailHelper.php';
+require_once 'includes/newsletter_settings.php';
 
 function newsletter_admin_email(PDO $pdo)
 {
@@ -30,6 +31,7 @@ if (!is_array($input)) {
 }
 
 $email = filter_var(trim((string) ($input['email'] ?? '')), FILTER_VALIDATE_EMAIL);
+$newsletterSettings = sr_newsletter_settings($pdo ?? null);
 $source = preg_replace('/[^a-z0-9_-]/i', '', (string) ($input['source'] ?? 'website'));
 $source = $source !== '' ? substr($source, 0, 60) : 'website';
 
@@ -43,7 +45,7 @@ try {
     $stmt->execute([$email]);
 
     if ($stmt->fetch()) {
-        echo json_encode(['success' => true, 'message' => 'You are already subscribed!']);
+        echo json_encode(['success' => true, 'message' => $newsletterSettings['newsletter_duplicate_message']]);
         exit;
     }
 
@@ -60,7 +62,7 @@ try {
         . '</body></html>';
     (new EmailHelper())->sendHtmlMessage($recipient, $subject, $message, $email);
 
-    echo json_encode(['success' => true, 'message' => 'Thank you for subscribing!']);
+    echo json_encode(['success' => true, 'message' => $newsletterSettings['newsletter_success_message']]);
 } catch (PDOException $e) {
     echo json_encode(['success' => false, 'message' => 'An error occurred. Please try again later.']);
 }

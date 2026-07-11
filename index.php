@@ -10,13 +10,13 @@
     </div>
 
     <div class="relative z-10 text-center max-w-5xl px-6">
-        <p class="text-forest-800 font-medium tracking-[0.3em] uppercase mb-4 animate-fade-in">Private Wealth Office</p>
+        <p class="text-forest-800 font-medium tracking-[0.3em] uppercase mb-4 animate-fade-in">Property & Loan Advisory</p>
         <h1 class="text-4xl md:text-6xl font-serif text-white mb-6 leading-tight animate-fade-in">
-            Strategic Guidance for <br /> Properties & Financing Loans.
+            Practical Guidance for <br /> Properties & Financing Loans.
         </h1>
         <div class="w-24 h-1 bg-white mx-auto mb-8"></div>
         <p class="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto mb-12 font-light leading-relaxed">
-            De-risking property acquisitions and securing optimal bank/LPPSA <br class="hidden md:block" /> financing solutions for your capital growth.
+            Helping you review property choices, land opportunities, and bank/LPPSA <br class="hidden md:block" /> financing with clear steps before you commit.
         </p>
 
         <!-- Technical Trust Bar -->
